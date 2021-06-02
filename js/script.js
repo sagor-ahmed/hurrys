@@ -30,7 +30,7 @@ $('header .main-menu').meanmenu({
 	
 
    //SMOOTH SCROLL
-      $('.main-menu li a[href^="#"]').on('click', function(e){
+   /*   $('.main-menu li a[href^="#"]').on('click', function(e){
           e.preventDefault();
 
           var target = $(this.hash);
@@ -40,10 +40,74 @@ $('header .main-menu').meanmenu({
                   scrollTop: target.offset().top -60
               }, 500);
           }
-      });
+      });*/
  
   
-   
+     ////////////////////////////////////////////////////
+
+    // 0. Scroll To Top Js
+
+    function smoothSctollTop() {
+
+        $('.smooth-scroll a').on('click', function (event) {
+
+            var target = $(this.getAttribute('href'));
+
+            if (target.length) {
+
+                event.preventDefault();
+
+                $('html, body').stop().animate({
+
+                    scrollTop: target.offset().top - 0
+
+                }, 1500);
+
+            }
+
+        });
+
+    }
+
+    smoothSctollTop();
+
+
+
+    // Show or hide the sticky footer button
+
+    $(window).on('scroll', function (event) {
+
+        if ($(this).scrollTop() > 600) {
+
+            $('#scroll').fadeIn(200)
+
+        } else {
+
+            $('#scroll').fadeOut(200)
+
+        }
+
+    });
+
+
+
+    //Animate the scroll to yop
+
+    $('#scroll').on('click', function (event) {
+
+        event.preventDefault();
+
+
+
+        $('html, body').animate({
+
+            scrollTop: 0,
+
+        }, 1500);
+
+    });
+
+
    
  
 /*=== Google Map == */
@@ -107,15 +171,13 @@ window.addEventListener("scroll", function () {
   }
   //setup back to top link
   
-  if (scrollHeight > 500) {
-    //console.log("helo");
-	
-    topLink.classList.add("show-link");
-  } else {
-    topLink.classList.remove("show-link");
-  }
-  
-  
+ /* if (scrollHeight > 500) {
+     //console.log("helo");
+
+     topLink.classList.add("show-link");
+ } else {
+     topLink.classList.remove("show-link");
+ }*/
   
   
 });
@@ -128,28 +190,4 @@ window.addEventListener("scroll", function () {
       lng: -74.005974
 }); 
 		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
